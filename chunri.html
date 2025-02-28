@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>春日盛景</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+     .poetry-container {
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+     .poetry {
+            margin-right: 20px;
+            font-size: 18px;
+        }
+
+     .heart {
+            width: 80px;
+            height: 80px;
+            background-color: #ff69b4;
+            border-radius: 50px 50px 0 0;
+            transform: rotate(-45deg);
+            position: relative;
+        }
+
+     .heart::before,
+     .heart::after {
+            content: '';
+            width: 80px;
+            height: 80px;
+            background-color: #ff69b4;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+     .heart::before {
+            top: -40px;
+            left: 0;
+        }
+
+     .heart::after {
+            left: -40px;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="poetry-container">
+        <div class="poetry">
+            《春景盛情》<br>
+            春日暖光融，<br>
+            郁金香绽红。<br>
+            风摇香影动，<br>
+            露润艳姿丰。<br>
+            漫步心怀畅，<br>
+            凝眸意趣浓。<br>
+            欣然迎好景，<br>
+            岁月乐无穷。
+        </div>
+        <div class="heart"></div>
+    </div>
+</body>
+
+</html>
