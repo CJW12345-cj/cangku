@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>致我最爱的闺蜜</title>
+    <style>
+        /* 整体页面样式 */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #FFE4E1; /* 浅粉色背景 */
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 导航栏样式 */
+        nav {
+            background-color: #FF1493; /* 深粉色导航栏 */
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        /* 卡片样式 */
+      .card {
+            width: 300px;
+            background-color: #FFEFD5; /* 粉白色卡片底色 */
+            border: 2px solid #FF69B4; /* 玫瑰粉色边框 */
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+      .card:hover {
+            transform: scale(1.05);
+        }
+
+      .card img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+      .card h3 {
+            color: #FF1493; /* 深粉色标题 */
+        }
+
+      .card p {
+            color: #666;
+        }
+
+        /* 展开内容样式 */
+      .expanded-content {
+            display: none;
+            padding: 15px;
+            background-color: #FFE4E1; /* 浅粉色展开区域背景 */
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <nav>
+        <a href="#">照片回忆</a>
+        <a href="#">文字故事</a>
+        <a href="#">其他回忆</a>
+    </nav>
+
+    <!-- 卡片部分 -->
+    <div class="card">
+        <img src="闺蜜合照1.jpg" alt="合照1">
+        <h3>一起的第一次旅行</h3>
+        <p>那次我们在海边漫步，笑声洒满了沙滩。</p>
+        <div class="expanded-content">
+            <p>那是一个阳光明媚的夏天，我们背着行囊踏上了旅程。一路上充满了未知和惊喜，在海边我们一起捡贝壳、堆沙堡，度过了无比快乐的时光。</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="闺蜜合照2.jpg" alt="合照2">
+        <h3>生日的惊喜派对</h3>
+        <p>你精心为我准备的派对，让我感动不已。</p>
+        <div class="expanded-content">
+            <p>在我生日那天，你早早起来布置场地，当我走进房间看到满是气球和彩带，还有你为我准备的蛋糕，那一刻我觉得自己是世界上最幸福的人。</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="闺蜜合照3.jpg" alt="合照3">
+        <h3>深夜的谈心</h3>
+        <p>那些互相倾诉的夜晚，让我们的心更近了。</p>
+        <div class="expanded-content">
+            <p>无数个夜晚，我们躺在床上，分享着彼此的喜怒哀乐。那些真心话，让我们更加了解对方，也让我们的友谊更加深厚。</p>
+        </div>
+    </div>
+
+    <script>
+        // 获取所有卡片元素
+        const cards = document.querySelectorAll('.card');
+
+        // 为每张卡片添加点击事件
+        cards
