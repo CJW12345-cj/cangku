@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>超炫音乐播放器</title>
+    <style>
+        body {
+            background: url('https://cdn.pixabay.com/photo/2017/08/30/01/05/milky-way-2695569_1280.jpg') center/cover no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+       .music-player {
+            display: flex;
+            width: 1200px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 50px;
+            box-shadow: 0 0 100px rgba(0, 255, 255, 0.5);
+            overflow: hidden;
+            backdrop-filter: blur(50px);
+            padding: 60px 60px 120px 60px;
+            position: relative;
+        }
+
+       .cd-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+       .cd {
+            width: 400px;
+            height: 400px;
+            background: url('https://dummyimage.com/400x400/000/fff') center/cover no-repeat;
+            border-radius: 50%;
+            box-shadow: 0 0 80px rgba(0, 255, 255, 0.3), inset 0 0 50px rgba(0, 255, 255, 0.2);
+            animation: spin 10s linear infinite;
+            position: relative;
+        }
+
+       .cd::before {
+            content: '';
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            width: 80%;
+            height: 80%;
+            background: rgba(0, 255, 255, 0.1);
+            border-radius: 50%;
+            filter: blur(40px);
+        }
+
+       .cd::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 100px;
+            background: rgba(0, 255, 255, 0.2);
+            border-radius: 50%;
+            box-shadow: 0 0 60px rgba(0, 255, 255, 0.4);
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+       .lyrics-container {
+            flex: 1;
+            padding: 30px 50px;
+            overflow-y: auto;
+            max-height: 700px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 30px;
+            margin-left: 50px;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(0, 255, 255, 0.3) transparent;
+            position: relative;
+        }
+
+       .lyrics-container::-webkit-scrollbar {
+            width: 12px;
+        }
+
+       .lyrics-container::-webkit-scrollbar-thumb {
+            background-color: rgba(0, 255, 255, 0.3);
+            border-radius: 6px;
+        }
+
+       .lyrics {
+            color: #00ffff;
+            line-height: 2.5;
+            font-size: 22px;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+        }
+
+       .audio-controls {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        audio {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        audio::-webkit-media-controls-panel {
+            background: rgba(0, 255, 255, 0.1);
+            border-radius: 20px;
+        }
+
+        audio::-webkit-media-controls-play-button {
+            background-color: rgba(0, 255, 255, 0.3);
+            border-radius: 50%;
+        }
+
+        audio::-webkit-media-controls-current-time-display,
+        audio::-webkit-media-controls-time-remaining-display {
+            color: #00ffff;
+        }
+
+        audio::-webkit-media-controls-timeline {
+            background-color: rgba(0, 255, 255, 0.2);
+            border-radius: 10px;
+        }
+
+        audio::-webkit-media-controls-volume-slider {
+            background-color: rgba(0, 255, 255, 0.2);
+            border-radius: 10px;
+        }
+
+       .control-buttons {
+            margin-right: 20px;
+        }
+
+       .control-buttons button {
+            background: rgba(0, 255, 255, 0.3);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            color: #00ffff;
+            font-size: 20px;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+
+       .time-display {
+            color: #00ffff;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="music-player">
+        <div class="cd-container">
+            <div class="cd"></div>
+        </div>
+        <div class="lyrics-container">
+            <div class="lyrics" id="lyrics">
+                <!-- 这里可以替换为对应的歌词 -->
+                <p>这里是 Bandari - Snowdreams 的歌词</p>
+            </div>
+        </div>
+    </div>
+    <div class="audio-controls">
+        <div class="control-buttons">
+            <button id="play-pause-btn">▶</button>
+            <!-- 这里暂时先保留切换歌曲按钮，后续可添加更多歌曲实现切换功能 -->
+            <button id="prev-btn">⏮</button>
+            <button id="next-btn">⏭</button>
+        </div>
+        <audio id="audio" controls>
+            <!-- 请将此处替换为解密后音频文件的路径 -->
+            <source src="Bandari - Snowdreams.mp3" type="audio/mpeg">
+            你的浏览器不支持音频播放。
+        </audio>
+        <div class="time-display">
+            <span id="current-time">0:00</span> / <span id="duration">0:00</span>
+        </div>
+    </div>
+    <script>
+        const audio = document.getElementById('audio');
+        const playPauseBtn = document.getElementById('play-pause-btn');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const currentTimeDisplay = document.getElementById('current-time');
+        const durationDisplay = document.getElementById('duration');
+        const lyricsContainer = document.querySelector('.lyrics-container');
+        const lyrics = document.querySelectorAll('.lyrics p');
+
+        // 播放/暂停功能
+        playPauseBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                playPauseBtn.textContent = '⏸';
+            } else {
+                audio.pause();
+                playPauseBtn.textContent = '▶';
+            }
+        });
+
+        // 更新时间显示
+        audio.addEventListener('timeupdate', () => {
+            const currentTime = formatTime(audio.currentTime);
+            const duration = formatTime(audio.duration);
+            currentTimeDisplay.textContent = currentTime;
+            durationDisplay.textContent = duration;
+
+            // 歌词滚动与音乐播放同步
+            const scrollSpeed = 0.1;
+            lyricsContainer.scrollTop += scrollSpeed;
+        });
+
+        // 格式化时间
+        function formatTime(time) {
+            const minutes = Math.floor(time / 60);
+            const seconds = Math.floor(time % 60);
+            return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        // 这里暂时先留空，后续可添加切换歌曲的逻辑
+        prevBtn.addEventListener('click', () => {
+            // 切换到上一首歌曲的逻辑
+        });
+
+        nextBtn.addEventListener('click', () => {
+            // 切换到下一首歌曲的逻辑
+        });
+    </script>
+</body>
+
+</html>
+### 注意事项
+- 确保解密后的音频文件格式是浏览器支持的格式（如 MP3、OGG 等）。
+- 如果你将 HTML 文件和音频文件放在不同的目录下，需要确保 `src` 属性中的路径是正确的。
+
+完成上述操作后，你就可以在浏览器中打开 HTML 文件，通过 CD 界面播放解密后的
